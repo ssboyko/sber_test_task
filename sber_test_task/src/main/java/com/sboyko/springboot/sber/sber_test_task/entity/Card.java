@@ -3,7 +3,7 @@ package com.sboyko.springboot.sber.sber_test_task.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name="card")
+@Table(name="cards")
 public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,17 +11,54 @@ public class Card {
     private int id;
     @Column(name="cardNumber")
     private long cardNumber;
+    @Column(name="pin")
+    private int pin;
+    @Column(name = "cvc")
+    private int cvc;
     @Column (name = "balance")
     private long balance;
 
-    public Card() {
-    }
+    @ManyToOne (cascade = CascadeType.ALL)
+    @JoinColumn (name = "user_id")
+    private User user;
 
-    public Card(int id, long cardNumber) {
+
+   public Card() {
+   }
+
+
+    public Card(int id, long cardNumber, int pin, int cvc) {
         this.id = id;
         this.cardNumber = cardNumber;
+        this.pin = pin;
+        this.cvc = cvc;
         this.balance = 0;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public int getPin() {
+        return pin;
+    }
+
+    public void setPin(int pin) {
+        this.pin = pin;
+    }
+
+    public int getCvc() {
+        return cvc;
+    }
+
+    public void setCvc(int cvc) {
+        this.cvc = cvc;
+    }
+
 
     public int getId() {
         return id;
@@ -45,5 +82,18 @@ public class Card {
 
     public void setBalance(long balance) {
         this.balance = balance;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Card{" +
+                "id=" + id +
+                ", cardNumber=" + cardNumber +
+                ", pin=" + pin +
+                ", cvc=" + cvc +
+                ", user=" + user +
+                ", balance=" + balance +
+                '}';
     }
 }
