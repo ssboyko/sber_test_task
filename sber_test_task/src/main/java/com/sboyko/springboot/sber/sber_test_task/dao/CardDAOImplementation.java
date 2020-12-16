@@ -24,8 +24,27 @@ public class CardDAOImplementation implements CardDAO {
 
     @Override
     public void deleteCard(int id) {
-        Query query = entityManager.createQuery("delete from Card where id = : cardId");
+        Query query = entityManager.createQuery("DELETE from Card where id = : cardId");
         query.setParameter("cardId", id);
         query.executeUpdate();
     }
+
+    @Override
+    public long checkBalance(long cardNumber) {
+        Query query = entityManager.createQuery("SELECT balance from Card where cardNumber = : cardNumber");
+        query.setParameter("cardNumber", cardNumber);
+        return (long)query.getSingleResult();
+
+       // Card card = entityManager.find(Card.class, cardNumber);
+       // return card.getBalance();
+    }
+
+    @Override
+    public void loadMoney (long cardNumber, int sumOfLoad){
+        Query query = entityManager.createQuery("UPDATE Card SET balance = : sumOfLoad WHERE id = : cardNumber");
+        query.setParameter("sumOfLoad", sumOfLoad);
+        query.setParameter("cardNumber", cardNumber);
+        query.executeUpdate();
+    }
+
 }

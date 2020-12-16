@@ -17,10 +17,17 @@ public class MyRESTController {
         return card;
     }
 
-    @DeleteMapping("/cards/{id}")
-    public String deleteCard (@PathVariable int id){
-        cardService.deleteCard(id);
-        return "Card with id = " + id + " was deleted";
+   @DeleteMapping("/cards/{id}")
+   public String deleteCard (@PathVariable int id){
+       cardService.deleteCard(id);
+       return "Card with id = " + id + " was deleted";
+   }
+
+    @GetMapping ("/cards/{cardNumber}")
+    public long checkBalance (@PathVariable long cardNumber){
+        return cardService.checkBalance(cardNumber);
     }
+
+
 
 }

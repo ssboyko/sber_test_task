@@ -22,4 +22,15 @@ public class CardServiceImplementation implements CardService{
     public void deleteCard(int id) {
         cardDAO.deleteCard(id);
     }
+
+   @Override
+   @Transactional
+   public long checkBalance(long cardNumber) {
+       return cardDAO.checkBalance(cardNumber);
+    }
+
+    @Override
+    public void loadMoney(long cardNumber, int sumOfLoad) {
+        cardDAO.loadMoney(cardNumber,sumOfLoad);
+    }
 }
