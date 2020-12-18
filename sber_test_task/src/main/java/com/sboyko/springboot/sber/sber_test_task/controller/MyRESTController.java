@@ -28,6 +28,10 @@ public class MyRESTController {
         return cardService.checkBalance(cardNumber);
     }
 
-
+    @PutMapping ("/cards/{cardNumber}/{sumOfLoad}")
+    public void loadMoney (@PathVariable long cardNumber,
+                           @PathVariable int sumOfLoad){
+        cardService.loadMoney(cardNumber,sumOfLoad);
+    }
 
 }
