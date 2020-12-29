@@ -30,7 +30,7 @@ public class CardServiceImplementation implements CardService{
     }
 
     @Override
-    public void loadMoney(long cardNumber, int sumOfLoad) {
+    public void loadMoney(String cardNumber, String sumOfLoad) {
         cardDAO.loadMoney(cardNumber,sumOfLoad);
     }
 }

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<body>
+<h2> TEST TEST</h2>
+<br>
+<br>
+<form  th:method="post" th:action="@{/api/cards/loadMoney/card/{cardNumber}/sum/{sumOfLoad}}">
+    <label>Card Number</label>
+    <input type="number" th:field="*{cardNumber}" id="cardNumber" placeholder="cardNumber">
+    <label for="sumOfLoad">sumOfLoad</label>
+    <input type="number" th:field="*{sumOfLoad}" id="sumOfLoad" placeholder="sumOfLoad">
+    <input type="submit" value="Load money">
+</form>
+
+
+</body>
+</html>

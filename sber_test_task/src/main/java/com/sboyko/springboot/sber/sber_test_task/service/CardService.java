@@ -6,5 +6,5 @@ public interface CardService {
     public void addCard (Card card);
     public void deleteCard (int id);
     public long checkBalance (long cardNumber);
-    public void loadMoney (long cardNumber, int sumOfLoad);
+    public void loadMoney (String cardNumber, String sumOfLoad);
 }

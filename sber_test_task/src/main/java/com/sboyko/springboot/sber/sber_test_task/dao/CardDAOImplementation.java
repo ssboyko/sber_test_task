@@ -2,13 +2,14 @@ package com.sboyko.springboot.sber.sber_test_task.dao;
 
 import com.sboyko.springboot.sber.sber_test_task.entity.Card;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 @Repository
-public class CardDAOImplementation implements CardDAO {
+public class CardDAOImplementation implements CardDAO  {
     @Autowired
     // EntityManager - это обёртка сессии. Это из JPA, а не Hibernate.
     // Чтобы не привязываться к Hibernate, а делать всё на JPA - создаем EntityManager, а не SessionFactory
@@ -40,8 +41,9 @@ public class CardDAOImplementation implements CardDAO {
     }
 
     @Override
-    public void loadMoney (long cardNumber, int sumOfLoad){
+    public void loadMoney (String cardNumber, String sumOfLoad){
         Query query = entityManager.createQuery("UPDATE Card SET balance = : sumOfLoad WHERE id = : cardNumber");
+
         query.setParameter("sumOfLoad", sumOfLoad);
         query.setParameter("cardNumber", cardNumber);
         query.executeUpdate();

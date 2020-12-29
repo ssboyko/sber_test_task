@@ -10,7 +10,7 @@ public class Card {
     @Column(name="id")
     private int id;
     @Column(name="cardNumber")
-    private long cardNumber;
+    private String cardNumber;
     @Column(name="pin")
     private int pin;
     @Column(name = "cvc")
@@ -27,7 +27,7 @@ public class Card {
    }
 
 
-    public Card(int id, long cardNumber, int pin, int cvc) {
+    public Card(int id, String cardNumber, int pin, int cvc) {
         this.id = id;
         this.cardNumber = cardNumber;
         this.pin = pin;
@@ -68,11 +68,11 @@ public class Card {
         this.id = id;
     }
 
-    public long getCardNumber() {
+    public String getCardNumber() {
         return cardNumber;
     }
 
-    public void setCardNumber(long cardNumber) {
+    public void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
     }
 
