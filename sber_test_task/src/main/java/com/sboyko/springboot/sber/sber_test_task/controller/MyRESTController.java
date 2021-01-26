@@ -1,15 +1,15 @@
 package com.sboyko.springboot.sber.sber_test_task.controller;
 
-import com.sboyko.springboot.sber.sber_test_task.dao.CardDAO;
 import com.sboyko.springboot.sber.sber_test_task.entity.Card;
-import com.sboyko.springboot.sber.sber_test_task.entity.User;
+
 import com.sboyko.springboot.sber.sber_test_task.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+
 import org.springframework.web.bind.annotation.*;
+
 
 @Controller
 @RequestMapping("/api")
@@ -43,10 +43,12 @@ public class MyRESTController {
         return "loadMoney";
     };
 
-    @RequestMapping (value = {"/api/cards/loadMoney/card/{cardNumber}/sum/{sumOfLoad}"},
-                        method = RequestMethod.POST)
-    public void loadMoney ( @PathVariable (value = "cardNumber") String cardNumber,
-                            @PathVariable (value = "sumOfLoad") String sumOfLoad) {
+    @GetMapping ("/")
+
+    public String loadMoney ( @RequestParam (name = "param", required = false, defaultValue = " ") String cardName, Model model){
+
+        //Написать метод findCardByName
+
         //cardService.loadMoney(cardNumber,sumOfLoad);
 
 
@@ -55,6 +57,8 @@ public class MyRESTController {
         //cardService.loadMoney(cardNumber,sumOfLoad);
 
     }
+
+
     @PostMapping ("/test")
     public void getTest (Model model){
         System.out.println("Test");

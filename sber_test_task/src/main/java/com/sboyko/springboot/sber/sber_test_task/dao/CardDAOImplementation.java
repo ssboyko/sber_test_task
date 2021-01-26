@@ -2,6 +2,7 @@ package com.sboyko.springboot.sber.sber_test_task.dao;
 
 import com.sboyko.springboot.sber.sber_test_task.entity.Card;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,7 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 @Repository
-public class CardDAOImplementation implements CardDAO  {
+public class CardDAOImplementation implements JpaRepository <Card,Long> {
     @Autowired
     // EntityManager - это обёртка сессии. Это из JPA, а не Hibernate.
     // Чтобы не привязываться к Hibernate, а делать всё на JPA - создаем EntityManager, а не SessionFactory
